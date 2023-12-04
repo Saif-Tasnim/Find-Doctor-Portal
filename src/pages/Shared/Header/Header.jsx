@@ -2,6 +2,7 @@ import React from 'react';
 import logoImg from '../../../assets/Banner/logo.png';
 import { Link } from 'react-router-dom';
 import NavBar from '../../../component/Nav/NavBar/NavBar';
+import ResponsiveNav from '../../../component/Nav/ResposniveNav/ResponsiveNav';
 
 const Header = () => {
     return (
@@ -15,7 +16,7 @@ const Header = () => {
 
             <nav>
                 <NavBar></NavBar>
-                {/* <ResponsiveNav></ResponsiveNav> */}
+                <ResponsiveNav></ResponsiveNav>
             </nav>
 
         </header>

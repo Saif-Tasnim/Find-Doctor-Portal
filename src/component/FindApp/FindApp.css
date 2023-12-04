@@ -1,0 +1,10 @@
+.find-app-bg {
+    background: url('../../assets/AppImage/hero_bg_1.svg') no-repeat;
+    /* background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial; */
+    background-attachment: fixed;
+    /* background-origin: initial;
+    background-clip: initial; */
+    background-color: rgb(63, 64, 121);
+}
