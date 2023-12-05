@@ -4,6 +4,9 @@ import {
 import Main from "../layout/Main";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
+import FindDoctor from "../pages/FindDoctor/FindDoctor";
+import Login from "../layout/Login";
+import MainSignIn from "../pages/Login/MainSignIn/MainSignIn";
 
 
 export const router = createBrowserRouter(
@@ -16,10 +19,10 @@ export const router = createBrowserRouter(
                     path: "/",
                     element: <Home></Home>
                 },
-                // {
-                //     path: "find-doctor",
-                //     element: <FindDoctor></FindDoctor>
-                // },
+                {
+                    path: "find-doctor",
+                    element: <FindDoctor></FindDoctor>
+                },
                 // {
                 //     path: "single-doctor-details/:id",
                 //     element: <DoctorDetails></DoctorDetails>
@@ -40,6 +43,17 @@ export const router = createBrowserRouter(
                 {
                     path: "about-us",
                     element: <About></About>
+                },
+            ]
+        },
+
+        {
+            path: '/login',
+            element: <Login></Login>,
+            children: [
+                {
+                    path: '/login',
+                    element: <MainSignIn></MainSignIn>
                 },
             ]
         }

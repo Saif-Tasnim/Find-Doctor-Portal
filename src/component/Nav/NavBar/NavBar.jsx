@@ -13,7 +13,7 @@ const NavBar = () => {
                 </li>
 
                 <li className='px-2 font-semibold hover:text-[#e74e84]'> <Link to="/"> Contact Us </Link> </li>
-                <li className='px-2 font-semibold hover:text-[#e74e84]'> <Link to="/"> Log In </Link> </li>
+                <li className='px-2 font-semibold hover:text-[#e74e84]'> <Link to="/login"> Log In </Link> </li>
             </ul>
         </>
 
