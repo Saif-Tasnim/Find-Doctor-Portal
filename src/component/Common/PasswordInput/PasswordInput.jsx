@@ -14,6 +14,7 @@ const PasswordInput = ({ label, placeholder }) => {
                     <input type={show ? "text" : "password"} placeholder={placeholder} className="input input-bordered input-primary w-full" />
                     <FaRegEyeSlash className={`absolute right-2 top-[35%] hover:cursor-pointer ${show ? "opacity-100" : "opacity-50"}`}
                         onClick={() => { isShow(!show) }}
+                        onChange={(e) => console.log(e)}
                     />
                 </div>
             </label>
