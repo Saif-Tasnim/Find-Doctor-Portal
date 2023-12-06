@@ -8,13 +8,13 @@ const DropDown = () => {
     const { logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
-         logOut()
-         .then(() => {
-            Swal.fire({
-                title: "LogOut!",
-                icon: "success"
-              });
-         })
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    title: "LogOut!",
+                    icon: "success"
+                });
+            })
     }
 
 
@@ -24,7 +24,7 @@ const DropDown = () => {
                 <Avatar></Avatar>
             </summary>
             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                <li><Link to=''> My Profile </Link></li>
+                <li><Link to='/account-dashboard'> My Profile </Link></li>
                 <li> <button onClick={handleLogOut}> LogOut </button></li>
             </ul>
         </details>

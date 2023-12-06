@@ -7,6 +7,9 @@ import About from "../pages/About/About";
 import FindDoctor from "../pages/FindDoctor/FindDoctor";
 import Login from "../layout/Login";
 import MainSignIn from "../pages/Login/MainSignIn/MainSignIn";
+import Profile from "../layout/Profile";
+import AllUser from "../pages/Admin/AllUser/AllUser";
+import AllDoctor from "../pages/Admin/AllDoctor/AllDoctor";
 
 
 export const router = createBrowserRouter(
@@ -55,6 +58,22 @@ export const router = createBrowserRouter(
                     path: '/login',
                     element: <MainSignIn></MainSignIn>
                 },
+            ]
+        },
+
+        {
+            path: '/admin-route',
+            element: <Profile></Profile>,
+            children: [
+                {
+                    path: 'admin-route',
+                    element: <AllUser></AllUser>
+                },
+                {
+                    path: 'account-doctors',
+                    element: <AllDoctor></AllDoctor>
+                },
+
             ]
         }
     ]

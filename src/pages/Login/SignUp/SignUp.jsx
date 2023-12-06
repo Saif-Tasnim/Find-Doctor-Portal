@@ -4,6 +4,7 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../auth/AuthProvider/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const SignUp = () => {
@@ -39,21 +40,26 @@ const SignUp = () => {
 
         fullName = `${data.firstName} ${data.lastName}`;
 
+        const user = { ...data, role: "client" }
+
         //TODO : AJAX query for storing into db
         signUp(data.email, data.password)
             .then(() => {
                 updateData(fullName)
-                    .then(() => {
-                        Swal.fire({
-                            title: "Good job!",
-                            text: "Account Created",
-                            icon: "success"
-                        });
+                    .then(async () => {
+                        const res = await axios.post("http://localhost:5000/store-user", user);
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                title: "Good job!",
+                                text: "Account Created",
+                                icon: "success"
+                            });
 
-                        navigate(from, { replace: true });
-                        setBtnClick(false);
-                        reset();
+                            navigate(from, { replace: true });
+                            setBtnClick(false);
+                            reset();
 
+                        }
                     })
             })
             .catch(err => {
