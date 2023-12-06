@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaRegEyeSlash } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import googleImg from '../../../assets/Entry/search.png';
+import { AuthContext } from '../../../auth/AuthProvider/AuthProvider';
 
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const [show, isShow] = useState(false);
+
+    const { user } = useContext(AuthContext)
+
+    console.log(user);
 
     const onSubmit = (data) => {
         console.log(data);
