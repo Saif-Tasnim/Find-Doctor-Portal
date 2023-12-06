@@ -4,21 +4,42 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import googleImg from '../../../assets/Entry/search.png';
 import { AuthContext } from '../../../auth/AuthProvider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SignIn = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const [show, isShow] = useState(false);
+    const [btnDisabled, setBtnDisabled] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { signIn } = useContext(AuthContext);
 
-    const { user } = useContext(AuthContext)
-
-    console.log(user);
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = (data) => {
-        console.log(data);
-    }
+        setBtnDisabled(true)
 
-    //TODO : AJAX query for storing into db
+        signIn(data.email, data.password)
+            .then(() => {
+                if (data.email === "admin@gmail.com") {
+                    navigate('/admin-route')
+                }
+                else {
+                    navigate(from, { replace: true });
+                }
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: err
+                });
+
+                setBtnDisabled(false)
+            })
+    }
 
 
     return (
@@ -44,7 +65,6 @@ const SignIn = () => {
                     </label>
 
                     {/* password */}
-
                     <label className="form-control w-full max-w-lg my-5">
                         <div className="label mb-1 font-semibold opacity-80">
                             <span className="label-text text-lg"> Password
@@ -63,7 +83,9 @@ const SignIn = () => {
                         </div>
                     </label>
 
-                    <button className='btn bg-primary text-white px-8 py-4 rounded-xl hover:bg-accent w-full md:w-1/3 my-5'> Sign In </button>
+                    <button className='btn bg-primary text-white px-8 py-4 rounded-xl hover:bg-accent w-full md:w-1/3 my-5'
+                        disabled={btnDisabled}
+                    > Sign In </button>
                 </form>
 
 
@@ -74,8 +96,6 @@ const SignIn = () => {
                     <img src={googleImg} className='w-8 mt-3 mx-auto hover:cursor-pointer' alt="" />
                 </div>
             </div>
-
-
         </section>
     );
 };

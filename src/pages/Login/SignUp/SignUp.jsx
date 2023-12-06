@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from "react-hook-form"
 import { FaRegEyeSlash } from "react-icons/fa6";
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../auth/AuthProvider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const [show, isShow] = useState(false)
     const [conShow, isConShow] = useState(false)
+    const { signUp, updateData } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    let fullName = "";
+    const from = location.state?.from?.pathname || '/';
+    const [btnClick, setBtnClick] = useState(false);
+
 
     const onSubmit = (data) => {
-        console.log(data);
+        setBtnClick(true);
 
         if (data.password !== data.conPassword) {
             Swal.fire({
@@ -28,17 +37,37 @@ const SignUp = () => {
             });
         }
 
+        fullName = `${data.firstName} ${data.lastName}`;
+
         //TODO : AJAX query for storing into db
-        Swal.fire({
-            title: "Good job!",
-            text: "Account Created",
-            icon: "success"
-        });
+        signUp(data.email, data.password)
+            .then(() => {
+                updateData(fullName)
+                    .then(() => {
+                        Swal.fire({
+                            title: "Good job!",
+                            text: "Account Created",
+                            icon: "success"
+                        });
 
+                        navigate(from, { replace: true });
+                        setBtnClick(false);
+                        reset();
 
+                    })
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: err,
+                });
+                setBtnClick(false);
+            })
     };
 
     return (
+
         <section className='mt-9'>
             <h1 className='text-3xl font-bold text-primary mb-8'> Create Account ! </h1>
 
@@ -80,7 +109,6 @@ const SignUp = () => {
                 </div>
 
                 {/* contact part */}
-
                 <div className='flex flex-col space-y-2 mb-0 md:space-y-0 md:flex-row md:gap-5 md:mb-4'>
                     {/* email */}
                     <div className='w-full'>
@@ -158,9 +186,9 @@ const SignUp = () => {
                     </div>
                 </div>
                 {/* button */}
-                <input type='submit' className='btn bg-primary text-white px-8 py-4 rounded-xl hover:bg-accent w-full md:w-1/3 my-5'
-                    value="Sign Up"
-                />
+                <button type='submit' className='btn bg-primary text-white px-8 py-4 rounded-xl hover:bg-accent w-full md:w-1/3 my-5'
+                    disabled={btnClick}
+                > Sign Up </button>
 
             </form>
         </section>
