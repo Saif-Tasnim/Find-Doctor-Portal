@@ -24,7 +24,7 @@ const SignIn = () => {
         signIn(data.email, data.password)
             .then(() => {
                 if (data.email === "admin@gmail.com") {
-                    navigate('/admin-route')
+                    navigate('/admin-route/admin-route')
                 }
                 else {
                     navigate(from, { replace: true });

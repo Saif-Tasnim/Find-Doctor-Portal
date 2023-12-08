@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TextInput = ({ label, placeholder, type , name}) => {
+const TextInput = ({ label, placeholder, type}) => {
 
     return (
         <div>

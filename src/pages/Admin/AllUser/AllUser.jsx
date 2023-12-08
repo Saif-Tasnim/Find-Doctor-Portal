@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 
 const AllUser = () => {
+
     const { data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -24,7 +25,7 @@ const AllUser = () => {
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className='text-lg'>
                             <th>#</th>
                             <th>Name</th>
                             <th> Email </th>
@@ -32,7 +33,7 @@ const AllUser = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
+                        {/* rows */}
                         {
                             users.map((user, idx) =>
                                 <tr key={idx}>
@@ -40,6 +41,7 @@ const AllUser = () => {
                                     <td> {user?.firstName} {user?.lastName} </td>
                                     <td> {user?.email} </td>
                                     <td>{user?.phone}</td>
+
                                 </tr>)
                         }
 

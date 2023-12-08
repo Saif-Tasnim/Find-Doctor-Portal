@@ -35,7 +35,7 @@ const Banner = () => {
 
     return (
 
-        <div className='mt-24 h-screen max-w-full'>
+        <div className='mt-20 h-screen max-w-full'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

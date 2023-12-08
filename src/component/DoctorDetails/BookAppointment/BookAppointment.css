@@ -1,0 +1,27 @@
+.nice-dates-navigation,
+.nice-dates-day {
+    color: #111;
+    font-weight: 600;
+    opacity: 0.75;
+}
+
+.nice-dates-popover {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0.5px;
+    max-width: 180px;
+    transition: all;
+}
+
+/* .hover-day:hover{
+    background-color: #8ec549;
+    border: none;
+  }
+  */
+.red-background {
+    background-color: #eb525b;
+    border: 2px solid;
+    color: white;
+    font-weight: bold;
+    pointer-events: none;
+}

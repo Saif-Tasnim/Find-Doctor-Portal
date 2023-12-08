@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SearchingField from '../../component/FindDoctor/SearchingField/SearchingField';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 
 const FindDoctor = () => {
-    const [allData, setAllData] = useState([]);
 
-    // useEffect(() => {
-    //     fetch('/doctor_data.json')
-    //         .then(res => res.json())
-    //         .then(data => setAllData(data));
-    // }, [])
+    const { data: allData = [] } = useQuery({
+        queryKey: ['data'],
+        queryFn: async () => {
+            const res = await axios.get("http://localhost:5000/get-doctors")
+            return res.data;
+        }
+
+    })
 
     return (
-        <div className='my-24'>
+        <div className='my-20'>
 
             <div className='w-full mb-10'>
                 <h1 className='bg-[#3f4079] p-6 text-white text-2xl font-semibold text-center'> Find Your Doctor </h1>

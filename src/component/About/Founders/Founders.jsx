@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Link } from 'react-router-dom';
 import CommonTitle from '../../Common/CommonTitle/CommonTitle';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 
 const Founders = () => {
-    const [data, setData] = useState([]);
-   
-    // useEffect(() => {
-    //     fetch('founders_data.json')
-    //         .then(res => res.json())
-    //         .then(data => setData(data))
-    // }, [])
 
+    const { data } = useQuery({
+        queryKey: ['data'],
+        queryFn: async () => {
+            const res = await axios.get("http://localhost:5000/get-founders")
+            return res.data;
+        }
+    })
 
     return (
         <div className='bg-[#e9ecef] py-28'>
@@ -57,7 +59,7 @@ const Founders = () => {
                     </SwiperSlide>
                     )}
             </Swiper>
-        
+
         </div>
     );
 };

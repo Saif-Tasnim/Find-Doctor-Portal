@@ -10,6 +10,10 @@ import MainSignIn from "../pages/Login/MainSignIn/MainSignIn";
 import Profile from "../layout/Profile";
 import AllUser from "../pages/Admin/AllUser/AllUser";
 import AllDoctor from "../pages/Admin/AllDoctor/AllDoctor";
+import DoctorDetails from "../pages/DoctorDetails/DoctorDetails";
+import SubmitReview from "../pages/SubmitReview/SubmitReview";
+import BookDoctor from "../pages/BookDoctor/BookDoctor";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 export const router = createBrowserRouter(
@@ -26,23 +30,21 @@ export const router = createBrowserRouter(
                     path: "find-doctor",
                     element: <FindDoctor></FindDoctor>
                 },
-                // {
-                //     path: "single-doctor-details/:id",
-                //     element: <DoctorDetails></DoctorDetails>
-                // },
-                // {
-                //     path: "submit-review",
-                //     element: <SubmitReview></SubmitReview>
-                // },
-                // {
-                //     path: "book-doctor",
-                //     element: <BookDoctor></BookDoctor>
-                // },
-                // {
-                //     path: "see-doctor",
-                //     element: <NearAbout></NearAbout>,
-                //     exact: true
-                // },
+                {
+                    path: "single-doctor-details/:id",
+                    element: <PrivateRoutes> <DoctorDetails></DoctorDetails>
+                    </PrivateRoutes>
+                },
+                {
+                    path: "submit-review",
+                    element: <SubmitReview></SubmitReview>
+                },
+                {
+                    path: "book-doctor",
+                    element: <PrivateRoutes> <BookDoctor></BookDoctor>
+                    </PrivateRoutes>
+                },
+                
                 {
                     path: "about-us",
                     element: <About></About>

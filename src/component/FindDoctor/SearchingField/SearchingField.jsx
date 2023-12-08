@@ -55,11 +55,11 @@ const SearchingField = ({ data }) => {
     useEffect(() => {
         if (searchTerm && specialItem) {
             setPassingToData([]);
-            const bothData = data?.filter(dt => dt.location === searchTerm && dt.profession.includes(specialItem))
+            const bothData = data?.filter(dt => dt.location === searchTerm && dt.position.includes(specialItem))
 
             setPassingToData(bothData);
 
-            console.log(passingToData);
+            // console.log(passingToData);
         }
 
         else if (searchTerm) {
@@ -67,15 +67,15 @@ const SearchingField = ({ data }) => {
             setPassingToData([]);
             const locationData = data?.filter(dt => dt.location === searchTerm)
             setPassingToData(locationData);
-            console.log(passingToData);
+            // console.log(passingToData);
         }
 
         else if (specialItem) {
 
             setPassingToData([]);
-            const specialData = data?.filter(dt => dt.profession.includes(specialItem))
+            const specialData = data?.filter(dt => dt.position.includes(specialItem))
             setPassingToData(specialData);
-            console.log(passingToData);
+            // console.log(passingToData);
         }
 
     })

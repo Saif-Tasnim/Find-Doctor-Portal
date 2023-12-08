@@ -4,8 +4,24 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './MainSignIn.css'
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
+import { useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MainSignIn = () => {
+    const location = useLocation();
+    
+
+    if (location.state?.from?.pathname) {
+        Swal.fire({
+            title: "Login First",
+            iconHtml: '😞',
+            customClass: {
+                icon: 'no-border'
+              }
+        });
+    }
+
+
     return (
         <section className='md:py-24 md:px-20 flex flex-col space-y-10 md:flex-row md:justify-center md:gap-16 bg-[#F5F8FA]'>
 

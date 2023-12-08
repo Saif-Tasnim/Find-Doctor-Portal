@@ -3,3 +3,7 @@
     color: white;
     font-weight: bold;
   }
+
+.no-border{
+  border: 0;
+}

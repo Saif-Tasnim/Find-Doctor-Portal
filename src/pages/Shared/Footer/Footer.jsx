@@ -17,9 +17,9 @@ const Footer = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-4 gap-12 pb-10'>
                 {/* logo  */}
-                <div>
+                <Link to="/">
                     <img src={img} alt="" className='md:ml-10 w-40' />
-                </div>
+                </Link>
 
                 {/* about */}
                 <div>
