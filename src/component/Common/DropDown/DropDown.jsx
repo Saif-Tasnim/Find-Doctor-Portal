@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
 import Avatar from '../Avatar/Avatar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../auth/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const DropDown = () => {
     const { logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         logOut()
             .then(() => {
+                navigate("/")
                 Swal.fire({
                     title: "LogOut!",
                     icon: "success"
@@ -24,7 +26,7 @@ const DropDown = () => {
                 <Avatar></Avatar>
             </summary>
             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                <li><Link to='/account-dashboard'> My Profile </Link></li>
+                <li><Link to='/profile'> My Profile </Link></li>
                 <li> <button onClick={handleLogOut}> LogOut </button></li>
             </ul>
         </details>

@@ -23,12 +23,12 @@ const BookingInfo = ({ bookingInfo, doctorData, price }) => {
                 price={price}
             />
 
-            <hr className='mt-3 mb-6' />
+            {/* <hr className='mt-3 mb-6' /> */}
 
             {/* Billing Details */}
             {/* <BillingDetails /> */}
 
-            <hr className='mt-3 mb-6' />
+            {/* <hr className='mt-3 mb-6' /> */}
 
             {/* cancellation policy */}
             {/* <div className='mt-7 ml-8'>

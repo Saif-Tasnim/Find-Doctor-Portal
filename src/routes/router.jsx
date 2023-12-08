@@ -14,6 +14,7 @@ import DoctorDetails from "../pages/DoctorDetails/DoctorDetails";
 import SubmitReview from "../pages/SubmitReview/SubmitReview";
 import BookDoctor from "../pages/BookDoctor/BookDoctor";
 import PrivateRoutes from "./PrivateRoutes";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 
 export const router = createBrowserRouter(
@@ -48,6 +49,10 @@ export const router = createBrowserRouter(
                 {
                     path: "about-us",
                     element: <About></About>
+                },
+                {
+                    path: "profile",
+                    element: <UserProfile></UserProfile>
                 },
             ]
         },
